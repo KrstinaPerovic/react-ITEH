@@ -54,10 +54,21 @@ function Putovanja (){
     (putovanje) =>
       putovanje.cena >= minCena && putovanje.cena <= maxCena
   );
-  console.log(filtriranaPutovanja)
-    return (
-      <div className="putovanja">
-              <div>
+
+  const [sort, setSort] = useState('cena'); // početno sortiranje po ceni
+  const sortiranaPutovanja = filtriranaPutovanja.sort((a, b) => {
+    if (sort === 'cena') {
+      return a.cena - b.cena;
+    } else if (sort === 'naziv') {
+      return a.naziv.localeCompare(b.naziv);
+    } else {
+      return 0;
+    }
+  });
+
+  return (
+    <>
+      <div className='filteri'>
         <label htmlFor="min-cena">Minimalna cena:</label>
         <input
           type="number"
@@ -65,8 +76,7 @@ function Putovanja (){
           value={minCena}
           onChange={promeniMinCenu}
         />
-      </div>
-      <div>
+       
         <label htmlFor="max-cena">Maksimalna cena:</label>
         <input
           type="number"
@@ -74,14 +84,22 @@ function Putovanja (){
           value={maxCena}
           onChange={promeniMaxCenu}
         />
+       
+        <label htmlFor="sortiraj-po">Sortiraj po:</label>
+        <select
+          id="sortiraj-po"
+          value={sort}
+          onChange={(e) => setSort(e.target.value)}
+        >
+          <option value="cena">Ceni</option>
+          <option value="naziv">Nazivu</option>
+        </select>
       </div>
-
-          {
-              filtriranaPutovanja.map((p)=><Card key={p.id} putovanje={p}></Card>)
-
-
-          }
-      </div>
+      <div className="putovanja">
+      {sortiranaPutovanja.map((p) => (
+        <Card key={p.id} putovanje={p} />
+      ))}
+    </div></>
     );
    
 }

@@ -95,7 +95,35 @@
   .putovanja {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+    
+  }
+  .filteri {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .filteri div {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+  }
+  
+  .filteri label {
+    margin-right: 10px;
+    font-weight: bold;
+  }
+  
+  .filteri input,
+  .filteri select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .filteri select {
+    font-size: 16px;
+    font-weight: bold;
   }
   

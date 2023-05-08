@@ -12,6 +12,7 @@ function Navbar(){
           <li>
             <Link to="/putovanja">Putovanja</Link>
           </li>
+ 
         </ul>
       </nav>
     );
