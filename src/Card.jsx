@@ -9,7 +9,7 @@ function Card({putovanje}){
         <div className="card-info">
           <h2>{putovanje.naziv}</h2>
           <p>{putovanje.opis}</p>
-          <h3>{putovanje.cena}</h3>
+          <h3>{putovanje.cena} EUR</h3>
         </div>
       </div>
     );
